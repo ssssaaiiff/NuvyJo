@@ -204,15 +204,19 @@
                         </a>
                     </div>
                     
-                    <!-- Reservation Form -->
+                    <!-- Reservation Form (Now using reliable HTML POST) -->
                     <div class="p-8 rounded-xl bg-navy shadow-2xl border-2 border-primary/50">
                         <h3 class="text-2xl font-bold text-primary mb-6">Pre-Register Here</h3>
-                        <form id="reservation-form">
-                            <!-- Hidden fields required by FormSubmit for email delivery -->
+                        <form id="reservation-form" action="https://formsubmit.co/mohammadalkhalili067@gmail.com" method="POST">
+                            
+                            <!-- IMPORTANT: These fields tell FormSubmit where to send the email and how to behave -->
                             <input type="hidden" name="_subject" value="New Nuvy Club Reservation from Website">
                             <input type="hidden" name="_replyto" value="email">
                             <input type="hidden" name="_captcha" value="false">
-
+                            <!-- REDIRECT: Add your live URL here so users return to your site after submission -->
+                            <!-- Example: https://mohammadalkhalili.github.io/nuvy-english-club/#reserve -->
+                            <input type="hidden" name="_next" value="https://formsubmit.co/thankyou.html"> 
+                            
                             <div class="mb-4">
                                 <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
                                 <input type="text" id="name" name="Name" required class="w-full p-3 rounded-lg bg-[#071a33] border border-blue-900 focus:ring-primary focus:border-primary transition duration-150 text-white">
@@ -228,7 +232,6 @@
                             <button type="submit" class="btn-primary w-full py-3 text-lg font-bold text-white rounded-xl shadow-lg" id="submit-button">
                                 Submit Reservation
                             </button>
-                            <p id="form-message" class="mt-4 text-center font-semibold"></p>
                         </form>
                     </div>
                 </div>
@@ -398,61 +401,10 @@
                 icon.classList.toggle('rotate-180');
             });
         });
-
-        // 3. Reservation Form Submission (FIXED: Now sends email via FormSubmit AJAX)
-        document.getElementById('reservation-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const submitButton = document.getElementById('submit-button');
-            const messageElement = document.getElementById('form-message');
-            
-            // --- Preparation ---
-            messageElement.textContent = 'Submitting reservation...';
-            messageElement.classList.remove('text-red-400', 'text-green-400');
-            messageElement.classList.add('text-primary');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Submitting...';
-
-            // Collect form data and add hidden fields
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-
-            // The hidden fields for FormSubmit are already in the HTML.
-            // We just need to ensure the data object is correct for JSON submission.
-
-            // --- Submission Logic ---
-            try {
-                // Endpoint for FormSubmit AJAX submission, sending to your email
-                const response = await fetch('https://formsubmit.co/ajax/mohammadalkhalili067@gmail.com', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    messageElement.textContent = 'Success! Your spot is reserved. Please join the WhatsApp group now to finalize your session time.';
-                    messageElement.classList.remove('text-primary');
-                    messageElement.classList.add('text-green-400');
-                    this.reset();
-                } else {
-                    // Log the detailed error from FormSubmit if available
-                    const errorDetails = await response.json();
-                    console.error('FormSubmit Response Error:', errorDetails);
-                    throw new Error('FormSubmit reported an error.');
-                }
-            } catch (error) {
-                console.error('Form submission failed:', error);
-                messageElement.textContent = 'Submission failed. Please check your network and try again, or use the WhatsApp group to book.';
-                messageElement.classList.remove('text-primary');
-                messageElement.classList.add('text-red-400');
-            }
-
-            // --- Cleanup ---
-            submitButton.disabled = false;
-            submitButton.textContent = 'Submit Reservation';
-        });
+        
+        // --- Form Submission Logic REMOVED ---
+        // The form now uses standard HTML POST, which is handled directly by the browser 
+        // and is the most reliable method for static sites.
     </script>
 </body>
 </html>
