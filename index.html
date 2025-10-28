@@ -186,7 +186,7 @@
             </div>
         </section>
 
-        <!-- 4. Reservation Section (The most important part!) -->
+        <!-- 4. Reservation Section (Now using Google Form) -->
         <section id="reserve" class="py-20 sm:py-28 bg-[#102e53]">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold text-center text-white mb-4">Reserve Your Spot</h2>
@@ -204,35 +204,23 @@
                         </a>
                     </div>
                     
-                    <!-- Reservation Form (Now using reliable HTML POST) -->
+                    <!-- Reservation Form (Now using Google Form) -->
                     <div class="p-8 rounded-xl bg-navy shadow-2xl border-2 border-primary/50">
-                        <h3 class="text-2xl font-bold text-primary mb-6">Pre-Register Here</h3>
-                        <form id="reservation-form" action="https://formsubmit.co/mohammadalkhalili067@gmail.com" method="POST">
-                            
-                            <!-- IMPORTANT: These fields tell FormSubmit where to send the email and how to behave -->
-                            <input type="hidden" name="_subject" value="New Nuvy Club Reservation from Website">
-                            <input type="hidden" name="_replyto" value="email">
-                            <input type="hidden" name="_captcha" value="false">
-                            <!-- REDIRECT: Add your live URL here so users return to your site after submission -->
-                            <!-- Example: https://mohammadalkhalili.github.io/nuvy-english-club/#reserve -->
-                            <input type="hidden" name="_next" value="https://formsubmit.co/thankyou.html"> 
-                            
-                            <div class="mb-4">
-                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
-                                <input type="text" id="name" name="Name" required class="w-full p-3 rounded-lg bg-[#071a33] border border-blue-900 focus:ring-primary focus:border-primary transition duration-150 text-white">
-                            </div>
-                            <div class="mb-4">
-                                <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Phone Number</label>
-                                <input type="tel" id="phone" name="Phone" required class="w-full p-3 rounded-lg bg-[#071a33] border border-blue-900 focus:ring-primary focus:border-primary transition duration-150 text-white" placeholder="+962 7XXXXXXXX">
-                            </div>
-                            <div class="mb-6">
-                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email (Optional)</label>
-                                <input type="email" id="email" name="Email" class="w-full p-3 rounded-lg bg-[#071a33] border border-blue-900 focus:ring-primary focus:border-primary transition duration-150 text-white">
-                            </div>
-                            <button type="submit" class="btn-primary w-full py-3 text-lg font-bold text-white rounded-xl shadow-lg" id="submit-button">
-                                Submit Reservation
-                            </button>
-                        </form>
+                        <h3 class="text-2xl font-bold text-primary mb-6">Secure Registration Form</h3>
+                        
+                        <!-- GOOGLE FORM EMBED -->
+                        <iframe src="https://forms.gle/Z9i38N3nYCYTvYVF8?embedded=true" 
+                                width="100%" 
+                                height="600" 
+                                frameborder="0" 
+                                marginheight="0" 
+                                marginwidth="0" 
+                                title="Nuvy English Club Registration Form" 
+                                class="rounded-lg"
+                        >
+                            Loading Google Form...
+                        </iframe>
+                        
                     </div>
                 </div>
             </div>
@@ -365,7 +353,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu, FAQs, and Form Submission -->
+    <!-- JavaScript for Mobile Menu and FAQs -->
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
@@ -401,10 +389,6 @@
                 icon.classList.toggle('rotate-180');
             });
         });
-        
-        // --- Form Submission Logic REMOVED ---
-        // The form now uses standard HTML POST, which is handled directly by the browser 
-        // and is the most reliable method for static sites.
     </script>
 </body>
 </html>
