@@ -1,504 +1,1007 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Nuvy English Club | Fluency Through Conversation in Jordan</title>
+
     <!-- Load Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Load Lucide Icons for aesthetic vectors -->
+
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
         body {
+
             font-family: 'Inter', sans-serif;
+
             background-color: #071a33; /* Deep Navy Background */
+
             color: #e5e7eb; /* Light Gray Text */
+
         }
+
         /* Custom class for the primary blue button/accent color */
+
         .btn-primary {
+
             background-color: #3b82f6; /* Blue-500 */
+
             transition: background-color 0.3s, transform 0.1s;
+
         }
+
         .btn-primary:hover {
+
             background-color: #1d4ed8; /* Blue-700 */
+
             transform: translateY(-2px);
+
             box-shadow: 0 4px 10px rgba(29, 78, 216, 0.4);
+
         }
+
         .text-primary {
+
             color: #3b82f6;
+
         }
+
         /* Custom Navy */
+
         .bg-navy {
+
             background-color: #071a33;
+
         }
+
         .border-blue-gradient {
+
             border-image: linear-gradient(to right, #3b82f6, #1d4ed8);
+
             border-image-slice: 1;
+
             border-width: 2px;
+
         }
+
         .hero-gradient {
+
             background: linear-gradient(180deg, #071a33 0%, #102e53 100%);
+
         }
+
     </style>
+
 </head>
+
 <body class="antialiased">
 
+
+
     <!-- Navigation Header -->
+
     <header class="sticky top-0 z-50 bg-navy/95 backdrop-blur-sm shadow-xl border-b border-blue-900/50">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="flex justify-between items-center h-20">
+
                 <!-- Logo -->
+
                 <a href="#home" class="flex items-center space-x-2">
+
                     <i data-lucide="message-square" class="w-8 h-8 text-[#3B82F6]"></i>
+
                     <span class="text-2xl font-extrabold text-white tracking-wider">Nuvy</span>
+
                     <span class="text-sm font-light text-[#3B82F6]">English Club</span>
+
                 </a>
-                
+
+               
+
                 <!-- Desktop Nav Links -->
+
                 <nav class="hidden md:flex space-x-8 font-medium">
+
                     <a href="#about" class="text-gray-300 hover:text-[#3B82F6] transition duration-150">Why Nuvy?</a>
+
                     <a href="#pricing" class="text-gray-300 hover:text-[#3B82F6] transition duration-150">Pricing</a>
+
                     <a href="#events" class="text-gray-300 hover:text-[#3B82F6] transition duration-150">Events</a>
+
                     <a href="#reserve" class="text-gray-300 hover:text-[#3B82F6] transition duration-150">Reserve</a>
+
                     <a href="#faqs" class="text-gray-300 hover:text-[#3B82F6] transition duration-150">FAQs</a>
+
                 </nav>
 
+
+
                 <!-- CTA Button -->
+
                 <a href="#reserve" class="hidden md:inline-flex btn-primary px-4 py-2 text-white text-sm font-semibold rounded-lg shadow-lg">
+
                     Book Your Session
+
                 </a>
+
+
 
                 <!-- Mobile Menu Button (Hamburger) -->
+
                 <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-blue-800/20 transition duration-150">
+
                     <i data-lucide="menu" class="w-6 h-6 text-[#3B82F6]"></i>
+
                 </button>
+
             </div>
+
         </div>
+
+
 
         <!-- Mobile Menu (Hidden by default) -->
+
         <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-blue-900/50">
+
             <nav class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+
                 <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-blue-800/30 hover:text-white transition duration-150">Why Nuvy?</a>
+
                 <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-blue-800/30 hover:text-white transition duration-150">Pricing</a>
+
                 <a href="#events" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-blue-800/30 hover:text-white transition duration-150">Events</a>
+
                 <a href="#reserve" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-blue-800/30 hover:text-white transition duration-150">Reserve</a>
+
                 <a href="#faqs" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-blue-800/30 hover:text-white transition duration-150">FAQs</a>
+
                 <a href="#reserve" class="block btn-primary mx-3 mt-3 px-3 py-2 text-white font-semibold rounded-lg shadow-lg">
+
                     Book Your Session
+
                 </a>
+
             </nav>
+
         </div>
+
     </header>
 
+
+
     <main>
+
         <!-- 1. Hero Section -->
+
         <section id="home" class="hero-gradient py-24 sm:py-32 lg:py-40">
+
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
                 <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight text-white mb-6">
+
                     Unlock Your <span class="text-primary block lg:inline-block">Spoken Fluency.</span>
+
                 </h1>
+
                 <p class="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
+
                     Nuvy English Club: Guided conversation, real topics, and social confidence in the heart of Jordan. Stop studying grammar, start **speaking.**
+
                 </p>
+
                 <div class="space-x-4">
+
                     <a href="#reserve" class="btn-primary inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white rounded-xl shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition duration-300">
+
                         Reserve Your Spot Now
+
                         <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+
                     </a>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <!-- 2. About Section: Why Nuvy? -->
+
         <section id="about" class="py-20 sm:py-28 bg-[#102e53]">
+
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
                 <h2 class="text-4xl font-bold text-center text-white mb-12">Why Choose Nuvy?</h2>
-                
+
+               
+
                 <div class="grid md:grid-cols-2 gap-12 items-center">
+
                     <!-- Text Content -->
+
                     <div class="space-y-6">
+
                         <h3 class="text-3xl font-bold text-primary">The Nuvy Advantage</h3>
+
                         <p class="text-lg text-gray-300 leading-relaxed">
+
                             Traditional classes teach grammar, but they often fail to instill the **courage to speak**. Nuvy focuses on guided conversation, real-world topics, and a supportive environment so you can rapidly build spoken fluency and social confidence.
+
                         </p>
+
                         <p class="text-lg text-gray-300 leading-relaxed">
+
                             We don't lecture; we facilitate. Our club is designed to move you past hesitation and into **confident, engaging dialogue.**
+
                         </p>
+
                     </div>
+
+
 
                     <!-- Key Features Grid -->
+
                     <div class="grid grid-cols-1 gap-6">
+
                         <!-- Feature 1 -->
+
                         <div class="p-6 rounded-xl bg-navy shadow-2xl border-l-4 border-primary hover:bg-[#0c2445] transition duration-200">
+
                             <h4 class="text-xl font-semibold text-white mb-2 flex items-center">
+
                                 <i data-lucide="users" class="w-5 h-5 mr-3 text-primary"></i> Real Conversation
+
                             </h4>
+
                             <p class="text-gray-400">Practice with peers in low-pressure, small group settings, enabling natural, spontaneous dialogue.</p>
+
                         </div>
+
                         <!-- Feature 2 -->
+
                         <div class="p-6 rounded-xl bg-navy shadow-2xl border-l-4 border-primary hover:bg-[#0c2445] transition duration-200">
+
                             <h4 class="text-xl font-semibold text-white mb-2 flex items-center">
+
                                 <i data-lucide="calendar" class="w-5 h-5 mr-3 text-primary"></i> Weekly Themes
+
                             </h4>
+
                             <p class="text-gray-400">Engage in meaningful discussions covering travel, technology, interviews, and culture to expand your vocabulary.</p>
+
                         </div>
+
                         <!-- Feature 3 -->
+
                         <div class="p-6 rounded-xl bg-navy shadow-2xl border-l-4 border-primary hover:bg-[#0c2445] transition duration-200">
+
                             <h4 class="text-xl font-semibold text-white mb-2 flex items-center">
+
                                 <i data-lucide="smile" class="w-5 h-5 mr-3 text-primary"></i> Friendly Facilitators
+
                             </h4>
+
                             <p class="text-gray-400">Local instructors who professionally guide, motivate, and create an encouraging, judgement-free learning space.</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <!-- 3. Pricing Section -->
+
         <section id="pricing" class="py-20 sm:py-28 bg-navy">
+
             <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
                 <h2 class="text-4xl font-bold text-white mb-10">Simple, Pay-As-You-Go Pricing</h2>
+
                 <p class="text-gray-300 mb-8">No long-term commitments, no registration fees. Pay only for the sessions you attend.</p>
-                
+
+               
+
                 <!-- Pricing Card -->
+
                 <div class="p-8 rounded-2xl bg-[#102e53] shadow-3xl shadow-blue-900/50 border border-blue-700/50 transform hover:scale-[1.03] transition duration-300">
+
                     <div class="flex flex-col items-center">
+
                         <i data-lucide="hand-coins" class="w-12 h-12 text-primary mb-4"></i>
+
                         <span class="text-5xl font-extrabold text-white">8 JDs</span>
+
                         <span class="text-2xl font-medium text-gray-300 mt-1">Per Session / Per Person</span>
+
                     </div>
-                    
+
+                   
+
                     <ul class="text-left mt-8 space-y-3 text-gray-300">
+
                         <li class="flex items-center">
+
                             <i data-lucide="check-circle" class="w-5 h-5 mr-2 text-green-400"></i>
+
                             Access to all weekly themes
+
                         </li>
+
                         <li class="flex items-center">
+
                             <i data-lucide="check-circle" class="w-5 h-5 mr-2 text-green-400"></i>
+
                             Guided by expert facilitators
+
                         </li>
+
                         <li class="flex items-center">
+
                             <i data-lucide="check-circle" class="w-5 h-5 mr-2 text-green-400"></i>
+
                             Small, supportive group setting
+
                         </li>
+
                     </ul>
 
+
+
                     <a href="#reserve" class="mt-8 block btn-primary w-full py-3 text-lg font-bold text-white rounded-xl shadow-lg">
+
                         I'm Ready to Speak!
+
                     </a>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <!-- 4. Reservation Section (The most important part!) -->
+
         <section id="reserve" class="py-20 sm:py-28 bg-[#102e53]">
+
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
                 <h2 class="text-4xl font-bold text-center text-white mb-4">Reserve Your Spot</h2>
+
                 <p class="text-xl text-center text-gray-300 mb-12">Secure your place in the next session by filling out the form or connecting directly via WhatsApp.</p>
 
+
+
                 <div class="grid md:grid-cols-2 gap-8">
+
                     <!-- WhatsApp Priority CTA -->
+
                     <div class="flex flex-col items-center justify-center p-8 rounded-xl bg-navy border-2 border-green-500 shadow-2xl shadow-green-900/50">
+
                         <i data-lucide="whatsapp" class="w-16 h-16 text-green-400 mb-4 fill-green-400"></i>
+
                         <h3 class="text-2xl font-bold text-white mb-4">Confirm via WhatsApp</h3>
+
                         <p class="text-center text-gray-300 mb-6">This is the quickest way to finalize your reservation and get details about the next session!</p>
+
                         <a href="https://chat.whatsapp.com/JI1NpIPUZI7FkEljSQfpJM" target="_blank" class="bg-green-500 hover:bg-green-600 text-white text-lg font-bold py-3 px-8 rounded-xl transition duration-200 flex items-center shadow-lg">
+
                             <i data-lucide="message-square-text" class="w-5 h-5 mr-2"></i>
+
                             Join WhatsApp Group
+
                         </a>
+
                     </div>
+
+
 
                     <!-- Reservation Form -->
+
                     <div class="p-8 rounded-xl bg-navy shadow-2xl border-2 border-primary/50">
+
                         <h3 class="text-2xl font-bold text-primary mb-6">Pre-Register Here</h3>
+
                         <form id="reservation-form">
+
                             <div class="mb-4">
+
                                 <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
+
                                 <input type="text" id="name" name="name" required class="w-full p-3 rounded-lg bg-[#071a33] border border-blue-900 focus:ring-primary focus:border-primary transition duration-150 text-white">
+
                             </div>
+
                             <div class="mb-4">
+
                                 <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Phone Number</label>
+
                                 <input type="tel" id="phone" name="phone" required class="w-full p-3 rounded-lg bg-[#071a33] border border-blue-900 focus:ring-primary focus:border-primary transition duration-150 text-white" placeholder="+962 7XXXXXXXX">
+
                             </div>
+
                             <div class="mb-6">
+
                                 <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email (Optional)</label>
+
                                 <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-[#071a33] border border-blue-900 focus:ring-primary focus:border-primary transition duration-150 text-white">
+
                             </div>
-                            
+
+                           
+
                             <button type="submit" class="btn-primary w-full py-3 text-lg font-bold text-white rounded-xl shadow-lg" id="submit-button">
+
                                 Submit Reservation
+
                             </button>
+
                             <p id="form-message" class="mt-4 text-center font-semibold"></p>
+
                         </form>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <!-- 5. Events Section (Coming Soon) -->
+
         <section id="events" class="py-20 sm:py-28 bg-navy">
+
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
                 <h2 class="text-4xl font-bold text-white mb-6">Upcoming Events & Workshops</h2>
+
                 <div class="p-12 rounded-xl bg-[#102e53] shadow-2xl border border-blue-700/50">
+
                     <i data-lucide="sparkles" class="w-16 h-16 text-primary mx-auto mb-4"></i>
+
                     <p class="text-3xl font-bold text-white mb-2">Something Exciting is Brewing!</p>
+
                     <p class="text-xl text-gray-300 max-w-xl mx-auto">
+
                         We are currently planning specialized workshops and social events to enhance your English journey. Please check back soon for our official calendar and detailed announcements.
+
                     </p>
+
                     <p class="text-sm text-gray-500 mt-6">
+
                         Stay connected via our WhatsApp group for the first news!
+
                     </p>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <!-- 6. FAQs Section -->
+
         <section id="faqs" class="py-20 sm:py-28 bg-[#102e53]">
+
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
                 <h2 class="text-4xl font-bold text-center text-white mb-12">Frequently Asked Questions</h2>
 
+
+
                 <div class="space-y-4">
+
                     <!-- FAQ 1 -->
+
                     <div class="border border-blue-700/50 rounded-xl overflow-hidden shadow-xl">
+
                         <button class="faq-toggle w-full flex justify-between items-center p-6 bg-[#102e53] hover:bg-blue-900 transition duration-150">
+
                             <span class="text-lg font-semibold text-white">Do I need to prepare for the session?</span>
+
                             <i data-lucide="chevron-down" class="w-6 h-6 text-primary transform transition-transform duration-300"></i>
+
                         </button>
+
                         <div class="faq-content p-6 hidden bg-navy border-t border-blue-700/50">
+
                             <p class="text-gray-300">No — just come curious! Our goal is to promote natural, spontaneous conversation. We provide all the prompts, topics, and structured activities needed to guide the discussion effectively. Just bring your enthusiasm.</p>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- FAQ 2 -->
+
                     <div class="border border-blue-700/50 rounded-xl overflow-hidden shadow-xl">
+
                         <button class="faq-toggle w-full flex justify-between items-center p-6 bg-[#102e53] hover:bg-blue-900 transition duration-150">
+
                             <span class="text-lg font-semibold text-white">Is it okay if I'm shy or new to speaking?</span>
+
                             <i data-lucide="chevron-down" class="w-6 h-6 text-primary transform transition-transform duration-300"></i>
+
                         </button>
+
                         <div class="faq-content p-6 hidden bg-navy border-t border-blue-700/50">
+
                             <p class="text-gray-300">Yes, absolutely. Our groups are intentionally kept small and supportive. Our friendly facilitators are experts at guiding the conversation gently, ensuring everyone gets a chance to speak comfortably without pressure or judgement. Nuvy is built for confidence-building.</p>
+
                         </div>
+
                     </div>
-                    
+
+                   
+
                     <!-- FAQ 3 (Added Professional) -->
+
                     <div class="border border-blue-700/50 rounded-xl overflow-hidden shadow-xl">
+
                         <button class="faq-toggle w-full flex justify-between items-center p-6 bg-[#102e53] hover:bg-blue-900 transition duration-150">
+
                             <span class="text-lg font-semibold text-white">What is the required English proficiency level?</span>
+
                             <i data-lucide="chevron-down" class="w-6 h-6 text-primary transform transition-transform duration-300"></i>
+
                         </button>
+
                         <div class="faq-content p-6 hidden bg-navy border-t border-blue-700/50">
+
                             <p class="text-gray-300">We recommend an Intermediate (B1) level or higher. Our sessions focus on fluency and depth of discussion, not basic grammar. If you can hold a simple conversation, you're ready for Nuvy.</p>
+
                         </div>
+
                     </div>
+
+
 
                     <!-- FAQ 4 (Added Professional) -->
+
                     <div class="border border-blue-700/50 rounded-xl overflow-hidden shadow-xl">
+
                         <button class="faq-toggle w-full flex justify-between items-center p-6 bg-[#102e53] hover:bg-blue-900 transition duration-150">
+
                             <span class="text-lg font-semibold text-white">How do I pay for the session?</span>
+
                             <i data-lucide="chevron-down" class="w-6 h-6 text-primary transform transition-transform duration-300"></i>
+
                         </button>
+
                         <div class="faq-content p-6 hidden bg-navy border-t border-blue-700/50">
+
                             <p class="text-gray-300">Payment is collected per session. You can discuss the available payment methods (e.g., Cash, digital wallets) directly with your facilitator or through the WhatsApp group once your reservation is confirmed.</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
     </main>
 
+
+
     <!-- Footer Section -->
+
     <footer class="bg-navy border-t border-blue-900/50 py-12">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                
+
+               
+
                 <!-- Logo & Mission -->
+
                 <div>
+
                     <a href="#home" class="flex items-center space-x-2 mb-3">
+
                         <i data-lucide="message-square" class="w-7 h-7 text-[#3B82F6]"></i>
+
                         <span class="text-xl font-extrabold text-white tracking-wider">Nuvy English Club</span>
+
                     </a>
+
                     <p class="text-gray-400 text-sm mt-2">Fluency through real conversation, guided by local expertise in Jordan.</p>
+
                 </div>
+
+
 
                 <!-- Contact Info -->
+
                 <div>
+
                     <h4 class="text-lg font-semibold text-white mb-4">Contact Us</h4>
+
                     <div class="space-y-2 text-gray-400">
+
                         <div class="flex items-center">
+
                             <i data-lucide="phone" class="w-4 h-4 mr-2 text-primary"></i>
+
                             <a href="tel:+962796133128" class="hover:text-white transition duration-150">+962 796 133 128</a>
+
                         </div>
+
                         <div class="flex items-center">
+
                             <i data-lucide="phone" class="w-4 h-4 mr-2 text-primary"></i>
+
                             <a href="tel:+962779924636" class="hover:text-white transition duration-150">+962 779 924 636</a>
+
                         </div>
+
                         <div class="flex items-center">
+
                             <i data-lucide="phone" class="w-4 h-4 mr-2 text-primary"></i>
+
                             <a href="tel:+962790146259" class="hover:text-white transition duration-150">+962 790 146 259</a>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- Quick Links -->
+
                 <div>
+
                     <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+
                     <div class="space-y-2 text-gray-400">
+
                         <a href="#about" class="block hover:text-white transition duration-150">Why Nuvy?</a>
+
                         <a href="#pricing" class="block hover:text-white transition duration-150">Pricing Details</a>
+
                         <a href="#reserve" class="block hover:text-white transition duration-150">Book a Session</a>
+
                         <a href="#events" class="block hover:text-white transition duration-150">Events & Workshops</a>
+
                         <a href="#faqs" class="block hover:text-white transition duration-150">FAQs</a>
+
                     </div>
+
                 </div>
+
+
 
                 <!-- Social Media -->
+
                 <div>
+
                     <h4 class="text-lg font-semibold text-white mb-4">Connect</h4>
+
                     <div class="flex space-x-4">
+
                         <a href="https://chat.whatsapp.com/JI1NpIPUZI7FkEljSQfpJM" target="_blank" aria-label="WhatsApp Group" class="text-gray-400 hover:text-green-500 transition duration-150">
+
                             <i data-lucide="whatsapp" class="w-6 h-6 fill-current"></i>
+
                         </a>
+
                         <a href="https://www.instagram.com/nuvy.jo?igsh=MWJzeGI2YTV6MGVrag==" target="_blank" aria-label="Instagram Page" class="text-gray-400 hover:text-pink-500 transition duration-150">
+
                             <i data-lucide="instagram" class="w-6 h-6"></i>
+
                         </a>
+
                     </div>
+
                 </div>
 
+
+
             </div>
+
+
 
             <div class="text-center text-sm text-gray-500 mt-10 border-t border-blue-900/30 pt-6">
+
                 &copy; 2025 Nuvy English Club. All rights reserved.
+
             </div>
+
         </div>
+
     </footer>
 
+
+
     <!-- JavaScript for Mobile Menu, FAQs, and Form Submission -->
+
     <script>
+
         // Initialize Lucide icons
+
         lucide.createIcons();
 
+
+
         // 1. Mobile Menu Toggle
+
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
+
             const menu = document.getElementById('mobile-menu');
+
             menu.classList.toggle('hidden');
+
         });
+
+
 
         // 2. FAQ Accordion Logic
+
         document.querySelectorAll('.faq-toggle').forEach(button => {
+
             button.addEventListener('click', () => {
+
                 const content = button.nextElementSibling;
+
                 const icon = button.querySelector('i');
 
+
+
                 // Close all others and reset icons
+
                 document.querySelectorAll('.faq-content').forEach(c => {
+
                     if (c !== content && !c.classList.contains('hidden')) {
+
                         c.classList.add('hidden');
+
                         // FIX: Add check for c.previousElementSibling before accessing its properties.
+
                         const previousButton = c.previousElementSibling;
+
                         if (previousButton) {
+
                             const previousIcon = previousButton.querySelector('i');
+
                             if (previousIcon) {
+
                                 previousIcon.classList.remove('rotate-180');
+
                             }
+
                         }
+
                     }
+
                 });
 
+
+
                 // Toggle the clicked one
+
                 content.classList.toggle('hidden');
+
                 icon.classList.toggle('rotate-180');
+
             });
+
         });
+
+
 
         // 3. Reservation Form Submission (Simulated API Call)
+
         document.getElementById('reservation-form').addEventListener('submit', async function(event) {
+
             event.preventDefault();
-            
+
+           
+
             const name = document.getElementById('name').value;
+
             const phone = document.getElementById('phone').value;
+
             const email = document.getElementById('email').value;
+
             const submitButton = document.getElementById('submit-button');
+
             const messageElement = document.getElementById('form-message');
-            
+
+           
+
             messageElement.textContent = "Processing reservation...";
+
             messageElement.classList.remove('text-red-400', 'text-green-400');
+
             messageElement.classList.add('text-primary');
+
             submitButton.disabled = true;
+
             submitButton.textContent = "Submitting...";
 
+
+
             const systemPrompt = "You are a helpful virtual assistant for Nuvy English Club. When a student submits a reservation request, respond with a very short, cheerful, and professional message (1-2 sentences max). Acknowledge the information received and immediately guide them to join the WhatsApp group to confirm their session time.";
+
             const userQuery = `A student named ${name} with phone ${phone} and email ${email || 'not provided'} just pre-registered. Acknowledge this and tell them the next step is joining the WhatsApp group to finalize their booking and session details.`;
-            
+
+           
+
             // --- Gemini API Call Setup ---
-            const apiKey = ""; 
+
+            const apiKey = "";
+
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
             const payload = {
+
                 contents: [{ parts: [{ text: userQuery }] }],
+
                 systemInstruction: {
+
                     parts: [{ text: systemPrompt }]
+
                 },
+
             };
-            
+
+           
+
             let response = null;
+
             let result = null;
+
             let maxRetries = 3;
+
             let delay = 1000;
 
+
+
             for (let i = 0; i < maxRetries; i++) {
+
                 try {
+
                     response = await fetch(apiUrl, {
+
                         method: 'POST',
+
                         headers: { 'Content-Type': 'application/json' },
+
                         body: JSON.stringify(payload)
+
                     });
-                    
+
+                   
+
                     if (response.status === 429 && i < maxRetries - 1) {
+
                         // Too Many Requests, implement exponential backoff
+
                         await new Promise(resolve => setTimeout(resolve, delay));
+
                         delay *= 2;
-                        continue; 
+
+                        continue;
+
                     }
-                    
+
+                   
+
                     if (!response.ok) {
+
                         throw new Error(`HTTP error! status: ${response.status}`);
+
                     }
-                    
+
+                   
+
                     result = await response.json();
+
                     break; // Success, exit loop
 
+
+
                 } catch (error) {
+
                     console.error('API call failed:', error);
+
                     messageElement.textContent = "Reservation failed. Please try again or use WhatsApp.";
+
                     messageElement.classList.remove('text-primary');
+
                     messageElement.classList.add('text-red-400');
+
                     // If error is not 429 or max retries reached, we break
-                    if (i === maxRetries - 1) break; 
-                    
+
+                    if (i === maxRetries - 1) break;
+
+                   
+
                     await new Promise(resolve => setTimeout(resolve, delay));
+
                     delay *= 2;
+
                 }
+
             }
+
+
 
             if (result && result.candidates && result.candidates.length > 0 && result.candidates[0].content.parts[0].text) {
+
                 const generatedText = result.candidates[0].content.parts[0].text;
+
                 messageElement.textContent = generatedText;
+
                 messageElement.classList.remove('text-primary');
+
                 messageElement.classList.add('text-green-400');
+
                 // Clear form upon successful simulation
-                this.reset(); 
-            } else if (!messageElement.classList.contains('text-red-400')) {
-                // Generic error fallback if API call succeeded but structure was wrong
-                messageElement.textContent = "Thank you for your interest! Please join the WhatsApp group now to finalize your booking.";
-                messageElement.classList.remove('text-primary');
-                messageElement.classList.add('text-green-400');
+
                 this.reset();
+
+            } else if (!messageElement.classList.contains('text-red-400')) {
+
+                // Generic error fallback if API call succeeded but structure was wrong
+
+                messageElement.textContent = "Thank you for your interest! Please join the WhatsApp group now to finalize your booking.";
+
+                messageElement.classList.remove('text-primary');
+
+                messageElement.classList.add('text-green-400');
+
+                this.reset();
+
             }
 
+
+
             submitButton.disabled = false;
+
             submitButton.textContent = "Submit Reservation";
+
         });
 
+
+
     </script>
+
 </body>
+
 </html>
