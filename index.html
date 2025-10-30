@@ -44,6 +44,7 @@
     <header class="py-4 px-6 md:px-12 sticky top-0 z-50 bg-nuvy-dark-950/80 backdrop-blur-md border-b border-nuvy-dark-900/50">
         <nav class="flex justify-between items-center max-w-7xl mx-auto">
             <div class="flex items-center space-x-3">
+                <!-- Using a text logo for consistency, as the image is moved to the images folder -->
                 <span class="text-3xl font-bold text-nuvy-blue-500">Nuvy.</span>
                 <span id="user-english-level" class="text-sm font-semibold px-3 py-1 rounded-full hidden">
                     <!-- User Level Appears Here -->
@@ -68,15 +69,17 @@
         <!-- Hero Section -->
         <section class="text-center my-16 md:my-24">
             
-            <!-- Static Logo Image (Replaced Video) -->
+            <!-- Static Logo Image -->
             <div class="max-w-xs mx-auto mb-8">
                 <!-- 
-                  FIX: Using contentFetchId to ensure the image loads correctly in the environment.
-                  Nuvy Logo.jpg is loaded via its content ID.
+                  FIX: The image path is now set to 'images/Nuvy Logo.jpg'.
+                  For this to work on a live site, you MUST create a folder named 'images' 
+                  and place your 'Nuvy Logo.jpg' file inside it when you upload the website.
                 -->
-                <img src="uploaded:Nuvy Logo.jpg-383602a4-6ff4-4972-854c-98496f8399f3" 
+                <img src="images/Nuvy Logo.jpg" 
                      alt="Nuvy English Club Logo" 
-                     class="w-full rounded-2xl shadow-2xl shadow-nuvy-blue-500/20">
+                     class="w-full h-auto rounded-2xl shadow-2xl shadow-nuvy-blue-500/20"
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x300/020617/3b82f6?text=Nuvy+Logo&font=inter'">
             </div>
 
             <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">
@@ -131,7 +134,7 @@
                 </p>
             </div>
             <div class="mt-8">
-                <a href="https://forms.gle/LUv3uuqCCUvbrDV4A" target="_blank" class="cta-button bg-white text-nuvy-dark-950 hover:bg-gray-200">
+                <a href="https://forms.gle/LUv3uuqCCUvbrDV4A" target="_blank" class="cta-button">
                     Join The Next Session
                 </a>
             </div>
