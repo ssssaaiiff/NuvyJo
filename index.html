@@ -161,13 +161,22 @@
         </section>
 
         <!-- Test Your English Section -->
-        <section id="test" class="py-16 md:py-24 border-t border-nuvy-dark-900">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-nuvy-blue-500 mb-12">Test Your English Level</h2>
-            <div class="max-w-3xl mx-auto bg-nuvy-dark-900 p-8 rounded-xl shadow-2xl border border-nuvy-dark-800">
-                <p class="text-gray-400 mb-6 text-center">
-                    Answer these 15 quick questions to get an idea of your current English proficiency (A, B, or C).
-                </p>
-                <form id="english-quiz-form">
+       <!-- Test Your English Section -->
+<section id="test" class="py-16 md:py-24 border-t border-nuvy-dark-900 text-center">
+  <h2 class="text-3xl md:text-4xl font-bold text-nuvy-blue-500 mb-6">Test Your English Level</h2>
+  <p class="text-gray-400 mb-10 max-w-2xl mx-auto">
+    Take our quick 10-question test to find out your estimated English level instantly.
+  </p>
+
+  <div class="max-w-2xl mx-auto bg-nuvy-dark-900 p-8 rounded-2xl shadow-xl border border-nuvy-dark-800 text-left">
+    <form id="english-quiz-form" class="space-y-6"></form>
+    <button id="submit-quiz-button" class="cta-button w-full mt-6" onclick="submitQuiz()">
+      See My Level
+    </button>
+    <div id="quiz-result-message" class="mt-6 text-center font-semibold hidden"></div>
+  </div>
+</section>
+
                     <!-- Quiz Questions are populated by JS -->
                 </form>
                 <button id="submit-quiz-button" class="cta-button w-full mt-8" onclick="submitQuiz()">
