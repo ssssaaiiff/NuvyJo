@@ -1,400 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuvy - Conversational English Club</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Setup Inter font and custom colors */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-        :root {
-            --color-nuvy-blue-600: #2563eb;
-            --color-nuvy-blue-500: #3b82f6;
-            --color-nuvy-dark-950: #020617;
-            --color-nuvy-dark-900: #0f172a;
-            --color-nuvy-dark-800: #1e293b;
-            --color-nuvy-green: #10b981; /* For Level A */
-            --color-nuvy-yellow: #f59e0b; /* For Level B */
-            --color-nuvy-red: #ef4444; /* For Level C */
-        }
-
+    <title>Nuvy - English Conversational Club in Jordan</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for Icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Use Inter Font --><style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--color-nuvy-dark-950);
-            color: #e2e8f0;
+            background-color: var(--nuvy-blue-900); /* Deep Navy Background */
         }
-
-        .cta-button {
-            @apply bg-nuvy-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 ease-in-out;
-            @apply hover:bg-nuvy-blue-500 hover:shadow-xl hover:-translate-y-1;
+        /* Define custom blue colors for Tailwind to use throughout */
+        :root {
+            --nuvy-blue-50: #e0f2f7; /* Very light blue (for text/lightest accents) */
+            --nuvy-blue-100: #b3e5fc;
+            --nuvy-blue-200: #81d4fa;
+            --nuvy-blue-300: #4fc3f7;
+            --nuvy-blue-400: #29b6f6;
+            --nuvy-blue-500: #03a9f4; /* Main vibrant blue from logo (Accent 1) */
+            --nuvy-blue-600: #039be5;
+            --nuvy-blue-700: #0288d1; /* Primary Dark Blue (Accent 2) */
+            --nuvy-blue-800: #0277bd; /* Darker Navy (Section Background) */
+            --nuvy-blue-900: #01579b; /* Deepest Navy (Body Background/Footer) */
         }
+        .bg-nuvy-50 { background-color: var(--nuvy-blue-50); }
+        .bg-nuvy-500 { background-color: var(--nuvy-blue-500); }
+        .bg-nuvy-600 { background-color: var(--nuvy-blue-600); }
+        .bg-nuvy-700 { background-color: var(--nuvy-blue-700); }
+        .bg-nuvy-800 { background-color: var(--nuvy-blue-800); }
+        .bg-nuvy-900 { background-color: var(--nuvy-blue-900); }
+        .text-nuvy-50 { color: var(--nuvy-blue-50); }
+        .text-nuvy-100 { color: var(--nuvy-blue-100); }
+        .text-nuvy-700 { color: var(--nuvy-blue-700); }
+        .border-nuvy-500 { border-color: var(--nuvy-blue-500); }
+        .border-nuvy-700 { border-color: var(--nuvy-blue-700); }
+        .hover\:bg-nuvy-600:hover { background-color: var(--nuvy-blue-600); }
+        .focus\:ring-nuvy-500:focus { --tw-ring-color: var(--nuvy-blue-500); }
+        .hover\:text-nuvy-100:hover { color: var(--nuvy-blue-100); }
+        .hover\:border-nuvy-500:hover { border-color: var(--nuvy-blue-500); }
 
-        .input-style {
-            @apply w-full p-3 bg-nuvy-dark-800 border border-nuvy-dark-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-nuvy-blue-600 transition duration-150;
+        /* Specific styles for the "Test Your English" section to make it full-width */
+        #english-test-wrapper {
+            width: 100vw; /* Full viewport width */
+            margin-left: calc(50% - 50vw); /* Center it by offsetting margin */
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box; /* Include padding in the width */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            #english-test-wrapper {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            #english-test-wrapper {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
         }
     </style>
 </head>
+<body class="antialiased min-h-screen flex flex-col">
 
-<body class="antialiased">
-
-    <!-- Header & Navigation -->
-    <header class="py-4 px-6 md:px-12 sticky top-0 z-50 bg-nuvy-dark-950/80 backdrop-blur-md border-b border-nuvy-dark-900/50">
-        <nav class="flex justify-between items-center max-w-7xl mx-auto">
-            <div class="flex items-center space-x-3">
-                <!-- Using a text logo for consistency, as the image is moved to the images folder -->
-                <span class="text-3xl font-bold text-nuvy-blue-500">Nuvy.</span>
-                <span id="user-english-level" class="text-sm font-semibold px-3 py-1 rounded-full hidden">
-                    <!-- User Level Appears Here -->
-                </span>
-            </div>
-            <div class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#about" class="hover:text-nuvy-blue-500 transition duration-150">Why Nuvy?</a>
-                <a href="#pricing" class="hover:text-nuvy-blue-500 transition duration-150">Pricing</a>
-                <a href="#test" class="hover:text-nuvy-blue-500 transition duration-150">Test Your English</a>
-                <a href="#events" class="hover:text-nuvy-blue-500 transition duration-150">Events</a>
-                <a href="#contact" class="hover:text-nuvy-blue-500 transition duration-150">Contact</a>
-            </div>
-            <a href="https://forms.gle/LUv3uuqCCUvbrDV4A" target="_blank" class="hidden sm:inline-block bg-nuvy-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-nuvy-blue-500 transition duration-150">
-                Register Now
-            </a>
-            <!-- Mobile Menu Placeholder -->
-        </nav>
-    </header>
-
-    <main class="container mx-auto px-6 md:px-10 py-12">
-
-        <!-- Hero Section -->
-        <!-- Hero Section -->
-<section class="relative text-center my-16 md:my-24 bg-cover bg-center rounded-2xl overflow-hidden shadow-2xl"
-         style="background-image: url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80');">
-
-  <!-- Overlay for readability -->
-  <div class="absolute inset-0 bg-nuvy-dark-950/70 backdrop-blur-sm"></div>
-
-  <div class="relative z-10 px-6 py-20 md:py-32">
-    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg">
-      Master English, The Nuvy Way.
-    </h1>
-    <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-      Join Jordan's most engaging conversational English club. Speak confidently, naturally, and have fun doing it!
-    </p>
-    <a href="https://forms.gle/LUv3uuqCCUvbrDV4A" target="_blank"
-       class="cta-button inline-block">
-      Book Your Session Today!
-    </a>
-  </div>
-</section>
-
-            
-            <!-- Static Logo Image -->
-            <div class="max-w-xs mx-auto mb-8">
-                <!-- 
-                  FIX: The image path is now set to 'images/Nuvy Logo.jpg'.
-                  For this to work on a live site, you MUST create a folder named 'images' 
-                  and place your 'Nuvy Logo.jpg' file inside it when you upload the website.
-                -->
-                <img src="images/Nuvy Logo.jpg" 
-                     alt="Nuvy English Club Logo" 
-                     class="w-full h-auto rounded-2xl shadow-2xl shadow-nuvy-blue-500/20"
-                     onerror="this.onerror=null; this.src='https://placehold.co/300x300/020617/3b82f6?text=Nuvy+Logo&font=inter'">
-            </div>
-
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">
-                Master English, The Nuvy Way.
-            </h1>
-            <p class="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-                Join Jordan's most engaging conversational English club. Speak confidently, naturally, and have fun doing it!
-            </p>
-            <a href="https://forms.gle/LUv3uuqCCUvbrDV4A" target="_blank" class="cta-button">
-                Book Your Session Today!
-            </a>
-        </section>
-
-        <!-- Why Nuvy? Section -->
-        <section id="about" class="py-16 md:py-24 border-t border-nuvy-dark-900">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-nuvy-blue-500 mb-12">Why Nuvy?</h2>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                
-                <!-- Card 1: Fun & Engagement -->
-                <div class="bg-nuvy-dark-900 p-6 rounded-xl shadow-xl border border-nuvy-dark-800 hover:border-nuvy-blue-600 transition duration-300">
-                    <svg class="w-10 h-10 text-nuvy-blue-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h3 class="text-xl font-semibold text-white mb-3">Real Conversations</h3>
-                    <p class="text-gray-400">Forget textbooks. We focus on real-world topics, debates, and interactive games to build fluency and confidence.</p>
+    <!-- Navbar: Deep Navy Header --><nav class="bg-nuvy-900 shadow-xl sticky top-0 z-10 border-b-4 border-nuvy-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo and Level Display --><div class="flex-shrink-0 flex items-center space-x-3">
+                    <!-- Nuvy Logo Image --><img src="uploaded:Nuvy Logo.jpg-66f2b81a-ab9b-46e8-b4bf-62e34f41e485" alt="Nuvy Logo" class="h-8 w-auto filter invert brightness-150">
+                    <!-- User Level Tag --><span id="user-level-display" class="text-xs font-bold text-white px-3 py-1 rounded-full shadow-md hidden transition-all duration-300">
+                        Level: <span id="level-text">N/A</span>
+                    </span>
                 </div>
-
-                <!-- Card 2: Affordability & Value -->
-                <div class="bg-nuvy-dark-900 p-6 rounded-xl shadow-xl border border-nuvy-dark-800 hover:border-nuvy-blue-600 transition duration-300">
-                    <svg class="w-10 h-10 text-nuvy-blue-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    <h3 class="text-xl font-semibold text-white mb-3">Great Value</h3>
-                    <p class="text-gray-400">At just **8 JDs per session**, Nuvy offers high-quality practice without the commitment or cost of a full course.</p>
+                <!-- Navigation Links --><div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#about-nuvy" class="nav-link">What is Nuvy?</a>
+                    <a href="#english-test-wrapper" class="nav-link">Test Your English</a>
+                    <a href="#events" class="nav-link">Events</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </div>
-
-                <!-- Card 3: Professional Community -->
-                <div class="bg-nuvy-dark-900 p-6 rounded-xl shadow-xl border border-nuvy-dark-800 hover:border-nuvy-blue-600 transition duration-300">
-                    <svg class="w-10 h-10 text-nuvy-blue-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.143M22 7H13"></path></svg>
-                    <h3 class="text-xl font-semibold text-white mb-3">Supportive Environment</h3>
-                    <p class="text-gray-400">Practice with a diverse, supportive group of peers and experienced facilitators in a zero-judgment zone.</p>
+                <!-- Mobile Menu Button --><div class="sm:hidden flex items-center">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-nuvy-100 hover:text-white hover:bg-nuvy-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nuvy-500">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
+        <!-- Mobile Menu (Hidden by default) --><div id="mobile-menu" class="sm:hidden hidden bg-nuvy-800">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#about-nuvy" class="mobile-nav-link">What is Nuvy?</a>
+                <a href="#english-test-wrapper" class="mobile-nav-link">Test Your English</a>
+                <a href="#events" class="mobile-nav-link">Events</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <style>
+        .nav-link {
+            border-bottom: 2px solid transparent;
+            color: var(--nuvy-blue-50); /* Light text on dark bg */
+            transition: all 150ms ease-in-out;
+            display: inline-flex;
+            align-items: center;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            padding-top: 0.25rem;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            border-bottom: 2px solid var(--nuvy-blue-500); /* border-nuvy-500 accent */
+            color: var(--nuvy-blue-500); /* hover:text-nuvy-500 */
+        }
+        .mobile-nav-link {
+            display: block;
+            border-left: 4px solid transparent;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            color: var(--nuvy-blue-50);
+            background-color: var(--nuvy-blue-700);
+            margin-bottom: 1px;
+        }
+        .mobile-nav-link:hover {
+            background-color: var(--nuvy-blue-600);
+        }
+    </style>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="py-16 md:py-24 border-t border-nuvy-dark-900 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Simple Pricing, Zero Commitment</h2>
-            <p class="text-gray-400 mb-12 max-w-xl mx-auto">
-                No monthly fees, no mandatory courses. Pay for the sessions you attend and keep your English sharp!
-            </p>
-            <div class="bg-nuvy-blue-600 text-white p-8 rounded-2xl shadow-2xl inline-block">
-                <p class="text-lg font-medium">Price per Person / Per Session</p>
-                <p class="text-6xl md:text-8xl font-black mt-2">
-                    8 JDs
+    <!-- Main Content Area --><main class="flex-grow">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 space-y-16">
+
+            <!-- Hero Section: Deep Navy Background --><section id="home" class="text-center bg-nuvy-800 p-10 md:p-16 rounded-3xl shadow-2xl border-t-8 border-nuvy-500">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4">
+                    Unlock Your Voice with <span class="text-nuvy-500">Nuvy!</span>
+                </h1>
+                <p class="mt-3 max-w-3xl mx-auto text-xl text-nuvy-100 sm:mt-5 sm:text-2xl">
+                    The premier English Conversational Club in Jordan, where fun meets fluency.
                 </p>
-            </div>
-            <div class="mt-8">
-                <a href="https://forms.gle/LUv3uuqCCUvbrDV4A" target="_blank" class="cta-button">
-                    Join The Next Session
-                </a>
-            </div>
-        </section>
+                <div class="mt-6">
+                    <span class="inline-block px-4 py-2 text-2xl font-bold rounded-full bg-nuvy-500 text-white shadow-xl transform hover:scale-105 transition duration-300">
+                        Only 8 JOD per Session!
+                    </span>
+                </div>
+                <div class="mt-8">
+                    <a href="#contact" class="px-8 py-3 border border-transparent text-base font-medium rounded-full text-nuvy-900 bg-nuvy-50 text-xl font-bold hover:bg-white md:py-4 md:text-lg md:px-10 shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                        Reserve Your Spot Now!
+                    </a>
+                </div>
+            </section>
 
-        <!-- Test Your English Section -->
-       <!-- Test Your English Section -->
-<section id="test" class="py-16 md:py-24 border-t border-nuvy-dark-900 text-center">
-  <h2 class="text-3xl md:text-4xl font-bold text-nuvy-blue-500 mb-6">Test Your English Level</h2>
-  <p class="text-gray-400 mb-10 max-w-2xl mx-auto">
-    Take our quick 10-question test to find out your estimated English level instantly.
-  </p>
-
-  <div class="max-w-2xl mx-auto bg-nuvy-dark-900 p-8 rounded-2xl shadow-xl border border-nuvy-dark-800 text-left">
-    <form id="english-quiz-form" class="space-y-6"></form>
-    <button id="submit-quiz-button" class="cta-button w-full mt-6" onclick="submitQuiz()">
-      See My Level
-    </button>
-    <div id="quiz-result-message" class="mt-6 text-center font-semibold hidden"></div>
-  </div>
-</section>
-
-                    <!-- Quiz Questions are populated by JS -->
-                </form>
-                <button id="submit-quiz-button" class="cta-button w-full mt-8" onclick="submitQuiz()">
-                    See My Level
-                </button>
-                <div id="quiz-result-message" class="mt-4 text-center font-semibold hidden"></div>
-            </div>
-        </section>
-
-        <!-- Events Section (Coming Soon) -->
-        <section id="events" class="py-16 md:py-24 border-t border-nuvy-dark-900">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-nuvy-blue-500 mb-12">Events & Workshops</h2>
-            <div class="bg-nuvy-dark-900 p-12 rounded-xl shadow-2xl border-4 border-dashed border-nuvy-dark-800 text-center max-w-4xl mx-auto">
-                <svg class="w-16 h-16 text-nuvy-blue-500 mx-auto mb-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <h3 class="text-2xl font-bold text-white mb-2">Something Great is Coming...</h3>
-                <p class="text-lg text-gray-400">We're cooking up some exciting themed sessions, workshops, and special events. Check back soon!</p>
-            </div>
-        </section>
-
-        <!-- FAQs Section -->
-        <section id="faqs" class="py-16 md:py-24 border-t border-nuvy-dark-900">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-nuvy-blue-500 mb-12">Frequently Asked Questions</h2>
-            <div class="max-w-4xl mx-auto space-y-4">
-
-                <!-- FAQ 1 -->
-                <details class="bg-nuvy-dark-900 p-4 rounded-lg cursor-pointer transition duration-300 open:bg-nuvy-dark-800">
-                    <summary class="font-semibold text-white text-lg">Where are the sessions held?</summary>
-                    <p class="text-gray-400 mt-2 ml-4">Our sessions are primarily held in a central, comfortable location in Amman. Specific details are provided to registered attendees via the WhatsApp group.</p>
-                </details>
-
-                <!-- FAQ 2 -->
-                <details class="bg-nuvy-dark-900 p-4 rounded-lg cursor-pointer transition duration-300 open:bg-nuvy-dark-800">
-                    <summary class="font-semibold text-white text-lg">Do I need to sign up for multiple sessions?</summary>
-                    <p class="text-gray-400 mt-2 ml-4">No commitment required! You pay per session (8 JDs). You are welcome to join whenever your schedule allows. We just ask that you RSVP via the form to secure your spot.</p>
-                </details>
-
-                <!-- FAQ 3 -->
-                <details class="bg-nuvy-dark-900 p-4 rounded-lg cursor-pointer transition duration-300 open:bg-nuvy-dark-800">
-                    <summary class="font-semibold text-white text-lg">What if my English level is low?</summary>
-                    <p class="text-gray-400 mt-2 ml-4">Nuvy is perfect for all levels. Our facilitators ensure every participant gets time to speak, regardless of their fluency. The goal is practice, not perfection!</p>
-                </details>
-
-                <!-- FAQ 4 -->
-                <details class="bg-nuvy-dark-900 p-4 rounded-lg cursor-pointer transition duration-300 open:bg-nuvy-dark-800">
-                    <summary class="font-semibold text-white text-lg">How long is each session?</summary>
-                    <p class="text-gray-400 mt-2 ml-4">Each Nuvy session typically lasts between 90 minutes to 2 hours, focusing on maximum conversation time for everyone.</p>
-                </details>
-
-            </div>
-        </section>
-        
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 md:py-24 border-t border-nuvy-dark-900 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Ready to Start Speaking?</h2>
+            <!-- 1. What is "Nuvy"? Section --><section id="about-nuvy" class="bg-nuvy-700 p-8 rounded-2xl shadow-inner border border-nuvy-500">
+                <h2 class="text-3xl font-extrabold text-white mb-6 text-center">
+                    🚀 What is Nuvy? It's Your English Upgrade!
+                </h2>
+                <div class="max-w-4xl mx-auto text-center">
+                    <p class="text-lg text-nuvy-50 mb-4">
+                        Nuvy isn't just a club; it's a **conversation carnival**! We're here to banish boring grammar drills and replace them with real, exciting conversations. Think of us as your friendly, supportive space in Jordan where you can practice speaking English without fear.
+                    </p>
+                    <p class="text-lg text-nuvy-50 font-medium">
+                        Whether you want to nail that job interview, travel the world with confidence, or just chat about your favorite movies, Nuvy helps you turn those English rules into **real-world flow**. Get ready to talk, laugh, and learn!
+                    </p>
+                </div>
+            </section>
             
-            <a href="https://forms.gle/LUv3uuqCCUvbrDV4A" target="_blank" class="cta-button mb-12">
-                Secure Your Spot Now! (8 JDs/Session)
-            </a>
+        </div>
+        
+        <!-- 4. Test Your English Section (Full Width, standalone) --><section id="english-test-wrapper" class="bg-nuvy-900 py-16 text-white my-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-6 text-nuvy-500">
+                    🧠 Test Your English Level
+                </h2>
+                <p class="text-center text-nuvy-200 mb-10 text-lg">
+                    Find out where you stand! Answer these 10 quick questions to get your level (A1.1 - C1.1).
+                </p>
 
-            <div class="flex flex-wrap justify-center gap-8 mt-12">
-                
-                <!-- WhatsApp Link -->
-                <div class="p-6 bg-nuvy-dark-900 rounded-xl shadow-lg border border-nuvy-dark-800">
-                    <h3 class="text-xl font-semibold text-white mb-3">Join the Community</h3>
-                    <p class="text-gray-400 mb-4">Chat with us directly on WhatsApp for updates and questions.</p>
-                    <a href="https://chat.whatsapp.com/JI1NpIPUZI7FkEljSQfpJM" target="_blank" class="text-nuvy-blue-500 hover:text-nuvy-blue-600 font-medium transition duration-150 flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2c-5.46 0-9.92 4.46-9.92 9.92 0 1.63.4 3.23 1.17 4.67L2 22l6.27-2.01c1.41.77 2.97 1.17 4.77 1.17 5.46 0 9.92-4.46 9.92-9.92C21.96 6.46 17.5 2 12.04 2zM17.84 16.32c-.17.47-.64.65-.91.68-.26.04-.59.04-1.03-.22-.64-.37-1.9-1.17-2.19-1.29-.26-.12-.47-.19-.65.17-.18.37-.69.9-.84 1.07-.15.17-.3.19-.57.06-.27-.12-1.14-.42-2.18-1.34-2.18-1.92-2.52-1.8-2.82-1.85-.3-.04-.63-.04-.88.22-.26.12-.66.6-.9.88-.23.27-.47.3-.87.12-.4-.19-1.7-1.47-1.96-2.02-.26-.55-.17-.46-.35-.64-.17-.18-.38-.2-.57-.22-.17-.04-.42.06-.66.3-.23.23-.9.88-.9 2.15 0 1.27.92 2.47 1.05 2.65.12.17 1.8.85 4.38 1.95 2.75 1.17 3.32 1.05 3.96.96.64-.1 1.04-.63 1.2-1.22.15-.56.15-.8-.17-1.17z"/></svg>
-                        WhatsApp Group
-                    </a>
+                <div id="test-container" class="max-w-3xl mx-auto bg-nuvy-800 p-8 rounded-2xl shadow-xl border border-nuvy-500">
+                    <!-- Test will be injected here by JavaScript --><form id="english-test-form" class="space-y-6">
+                        <!-- Questions will be dynamically generated --></form>
+
+                    <div id="test-result" class="hidden text-center mt-8 p-6 border-2 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-2">
+                            🎉 Test Completed!
+                        </h3>
+                        <p id="result-message" class="text-xl text-white"></p>
+                    </div>
+
+                    <div class="mt-8 text-center">
+                        <button type="submit" id="submit-test" form="english-test-form" class="px-10 py-3 text-base font-bold rounded-full text-nuvy-900 bg-nuvy-500 hover:bg-nuvy-600 shadow-lg transition duration-300 transform hover:scale-105">
+                            Submit My Test
+                        </button>
+                    </div>
+                    <p id="test-taken-message" class="hidden text-center text-nuvy-50 mt-4 font-semibold">
+                        You have already taken the test. Your level is saved!
+                    </p>
                 </div>
-
-                <!-- Instagram Link -->
-                <div class="p-6 bg-nuvy-dark-900 rounded-xl shadow-lg border border-nuvy-dark-800">
-                    <h3 class="text-xl font-semibold text-white mb-3">Follow Us</h3>
-                    <p class="text-gray-400 mb-4">See our latest updates and session highlights on Instagram.</p>
-                    <a href="https://www.instagram.com/nuvy.jo?igsh=YzRtbGIxNjB6YzUw&utm_source=qr" target="_blank" class="text-nuvy-blue-500 hover:text-nuvy-blue-600 font-medium transition duration-150 flex items-center justify-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2.3c-2.3 0-3.9 1.6-3.9 3.9v8.4c0 2.3 1.6 3.9 3.9 3.9h8.4c2.3 0 3.9-1.6 3.9-3.9V7.8c0-2.3-1.6-3.9-3.9-3.9H7.6zm1.7 1.4c0 1.5 1.2 2.7 2.7 2.7s2.7-1.2 2.7-2.7S13.5 6.4 12 6.4 9.3 7.6 9.3 9.1zm2.7 6.6c-2.8 0-5.1-2.3-5.1-5.1s2.3-5.1 5.1-5.1 5.1 2.3 5.1 5.1-2.3 5.1-5.1 5.1z"/></svg>
-                        nuvy.jo on Instagram
-                    </a>
-                </div>
-
-                <!-- Phone Numbers -->
-                <div class="p-6 bg-nuvy-dark-900 rounded-xl shadow-lg border border-nuvy-dark-800">
-                    <h3 class="text-xl font-semibold text-white mb-3">Call or Message</h3>
-                    <p class="text-gray-400 mb-4">Reach out to the owners directly for immediate questions.</p>
-                    <ul class="space-y-1">
-                        <li><a href="tel:+962796133128" class="text-nuvy-blue-500 hover:text-nuvy-blue-600 transition duration-150">+962 7 9613 3128</a></li>
-                        <li><a href="tel:+962779924636" class="text-nuvy-blue-500 hover:text-nuvy-blue-600 transition duration-150">+962 7 7992 4636</a></li>
-                        <li><a href="tel:+962790146259" class="text-nuvy-blue-500 hover:text-nuvy-blue-600 transition duration-150">+962 7 9014 6259</a></li>
-                    </ul>
-                </div>
-
             </div>
         </section>
 
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 space-y-16">
+
+            <!-- 2. Events Section --><section id="events" class="bg-nuvy-800 p-8 rounded-2xl shadow-xl border-t-4 border-nuvy-500">
+                <h2 class="text-3xl font-extrabold text-white mb-6 text-center">
+                    🗓️ Upcoming Nuvy Events
+                </h2>
+                <div class="max-w-2xl mx-auto text-center p-10 bg-nuvy-900 rounded-lg border-2 border-dashed border-nuvy-700">
+                    <i class="fas fa-calendar-alt text-6xl text-nuvy-500 mb-4"></i>
+                    <p class="text-2xl font-semibold text-white">
+                        Exciting Events Coming Soon!
+                    </p>
+                    <p class="text-lg text-nuvy-200 mt-2">
+                        Check back here for details on special themed sessions, workshops, and gatherings.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 3. Contact Section --><section id="contact" class="bg-nuvy-800 p-8 rounded-2xl shadow-xl border-t-4 border-nuvy-500">
+                <h2 class="text-3xl font-extrabold text-white mb-8 text-center">
+                    📞 Connect & Reserve Your Spot!
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Reservation Link --><div class="p-6 bg-nuvy-700 rounded-xl shadow-md text-center border border-nuvy-500">
+                        <i class="fas fa-clipboard-list text-5xl text-nuvy-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-3">Book Your Session</h3>
+                        <p class="text-nuvy-100 mb-4">
+                            Use our Google Form to reserve your seat in the next session.
+                        </p>
+                        <a href="https://forms.gle/LUv3uuqCCUvbrDV4A" target="_blank" class="inline-block px-6 py-2 bg-nuvy-500 text-white font-semibold rounded-full hover:bg-nuvy-600 transition duration-200 shadow-lg transform hover:scale-105">
+                            Go to Reservation Form
+                        </a>
+                    </div>
+
+                    <!-- Contact Details --><div class="p-6 bg-nuvy-700 rounded-xl shadow-md border border-nuvy-500">
+                        <h3 class="text-xl font-bold text-white mb-4 text-center">Our Channels</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center space-x-3">
+                                <i class="fab fa-whatsapp text-2xl text-green-400"></i>
+                                <span class="font-semibold text-nuvy-100">WhatsApp Group:</span>
+                                <a href="https://chat.whatsapp.com/JI1NpIPUZI7FkEljSQfpJM" target="_blank" class="text-nuvy-300 hover:text-nuvy-500 hover:underline transition duration-150">Join Here</a>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fab fa-instagram text-2xl text-pink-400"></i>
+                                <span class="font-semibold text-nuvy-100">Instagram:</span>
+                                <a href="https://www.instagram.com/nuvy.jo?igsh=YzRtbGIxNjB6YzUw&utm_source=qr" target="_blank" class="text-nuvy-300 hover:text-nuvy-500 hover:underline transition duration-150">Follow Us</a>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-phone-alt text-xl text-nuvy-500"></i>
+                                <span class="font-semibold text-nuvy-100">Owner Contact:</span>
+                                <div class="flex flex-col sm:flex-row sm:space-x-3 text-sm">
+                                    <a href="tel:+962796133128" class="text-nuvy-200 hover:text-nuvy-500">+962 7 9613 3128</a>
+                                    <a href="tel:+962779924636" class="text-nuvy-200 hover:text-nuvy-500">+962 7 7992 4636</a>
+                                    <a href="tel:+962790146259" class="text-nuvy-200 hover:text-nuvy-500">+962 7 9014 6259</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="mt-16 py-8 px-6 md:px-12 bg-nuvy-dark-900 text-center border-t border-nuvy-dark-800">
-        <p class="text-gray-500 text-sm">&copy; 2024 Nuvy English Club. All rights reserved.</p>
+    <!-- Simple Footer --><footer class="bg-nuvy-900 border-t border-nuvy-700 mt-12">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-nuvy-200 text-sm">
+                &copy; 2024 Nuvy. English Conversation Club, Jordan.
+            </p>
+        </div>
     </footer>
 
-    <script>
-        const QUIZ_QUESTIONS = [
-            { q: "I have been learning English ___ five years.", options: ["since", "for", "during", "at"], answer: "for", level: 'A' },
-            { q: "She told him ___ the party.", options: ["about", "to", "for", "on"], answer: "about", level: 'A' },
-            { q: "If I ___ a bird, I would fly to the beach.", options: ["am", "was", "were", "is"], answer: "were", level: 'A' },
-            { q: "They ___ playing soccer when it started raining.", options: ["have been", "were", "is", "has been"], answer: "were", level: 'A' },
-            { q: "What is the capital of your country?", options: ["Jordan", "Amman", "Syria", "Riyadh"], answer: "Amman", level: 'B' }, // General Knowledge
-            { q: "Choose the correct spelling:", options: ["seperate", "separate", "separete", "seperate"], answer: "separate", level: 'B' },
-            { q: "The company's profits have been consistently ___.", options: ["escalating", "increasing", "growing", "rising"], answer: "increasing", level: 'B' }, // Vocabulary
-            { q: "He's very talented, he can play the guitar and ___.", options: ["sing", "singing", "to sing", "sings"], answer: "sing", level: 'A' },
-            { q: "What does 'verbose' mean?", options: ["Quiet and shy", "Using too many words", "Very intelligent", "Moving quickly"], answer: "Using too many words", level: 'C' }, // Advanced Vocabulary
-            { q: "Despite the heavy rain, the event was a great success. What does 'Despite' indicate?", options: ["Cause", "Addition", "Contrast", "Result"], answer: "Contrast", level: 'C' }, // Grammar/Conjunction
-            { q: "If they had known, they ___ helped us.", options: ["would", "will have", "would have", "had"], answer: "would have", level: 'C' }, // Conditional 3
-            { q: "Which word is a synonym for 'ubiquitous'?", options: ["Rare", "Expensive", "Everywhere", "Silent"], answer: "Everywhere", level: 'C' }, // Advanced Vocabulary
-            { q: "This cake smells ___ amazing.", options: ["very", "really", "badly", "good"], answer: "really", level: 'B' },
-            { q: "The news ___ very surprising.", options: ["is", "are", "were", "be"], answer: "is", level: 'A' },
-            { q: "The passive form of 'The students clean the room' is:", options: ["The room is cleaned by the students", "The room cleans the students", "The students are cleaned by the room", "The room cleaned the students"], answer: "The room is cleaned by the students", level: 'B' }
+    <!-- JavaScript for Test Logic and UI Management --><script>
+        const QUESTIONS = [
+            {
+                q: "They ____ playing football now.",
+                options: ["is", "are", "am", "be"],
+                answer: "are",
+                level: "A1"
+            },
+            {
+                q: "The opposite of 'happy' is ____.",
+                options: ["glad", "sad", "angry", "fun"],
+                answer: "sad",
+                level: "A1"
+            },
+            {
+                q: "If I had a million dollars, I ____ buy a house.",
+                options: ["will", "would", "can", "might"],
+                answer: "would",
+                level: "B1"
+            },
+            {
+                q: "What does 'resilience' mean?",
+                options: ["ability to recover quickly", "fixed mindset", "strong feeling", "great fortune"],
+                answer: "ability to recover quickly",
+                level: "B2"
+            },
+            {
+                q: "What is the capital of Jordan?",
+                options: ["Dubai", "Amman", "Riyadh", "Cairo"],
+                answer: "Amman",
+                level: "A1"
+            },
+            {
+                q: "She has been waiting ____ two hours.",
+                options: ["since", "for", "ago", "during"],
+                answer: "for",
+                level: "A2"
+            },
+            {
+                q: "To 'elucidate' means to...",
+                options: ["confuse", "hide", "clarify", "argue"],
+                answer: "clarify",
+                level: "C1"
+            },
+            {
+                q: "The passive form of 'The boy broke the window' is...",
+                options: ["The window broke the boy", "The window was broken by the boy", "The boy was broken by the window", "The window has broken by the boy"],
+                answer: "The window was broken by the boy",
+                level: "B1"
+            },
+            {
+                q: "The longest river in Africa is the ____.",
+                options: ["Amazon", "Nile", "Mississippi", "Yangtze"],
+                answer: "Nile",
+                level: "B2"
+            },
+            {
+                q: "A person who studies language is a...",
+                options: ["linguist", "biologist", "geologist", "pharmacist"],
+                answer: "linguist",
+                level: "C1"
+            }
         ];
 
-        // Function to create and render the quiz
-        function renderQuiz() {
-            const form = document.getElementById('english-quiz-form');
-            if (!form) return;
+        // Level Mapping (out of 10)
+        const getLevel = (score) => {
+            if (score <= 3) return { level: "A1.1", color: "bg-red-500", border: "border-red-500" };
+            if (score <= 5) return { level: "A2.1", color: "bg-orange-500", border: "border-orange-500" };
+            if (score <= 7) return { level: "B1.1", color: "bg-yellow-500", border: "border-yellow-500" };
+            if (score === 8) return { level: "B2.1", color: "bg-lime-500", border: "border-lime-500" };
+            if (score === 9) return { level: "C1.1", color: "bg-green-500", border: "border-green-500" };
+            if (score === 10) return { level: "C1.1", color: "bg-green-600", border: "border-green-600" };
+            return { level: "N/A", color: "bg-gray-400", border: "border-gray-400" };
+        };
 
-            form.innerHTML = ''; // Clear existing questions
-            QUIZ_QUESTIONS.forEach((qData, index) => {
-                const questionNumber = index + 1;
-                const qHtml = `
-                    <div class="mb-6 pb-4 border-b border-nuvy-dark-800 last:border-b-0">
-                        <p class="text-white font-medium mb-3">${questionNumber}. ${qData.q}</p>
+        const testForm = document.getElementById('english-test-form');
+        const testContainer = document.getElementById('test-container');
+        const submitButton = document.getElementById('submit-test');
+        const testResultMessage = document.getElementById('result-message');
+        const testResultDiv = document.getElementById('test-result');
+        const userLevelDisplay = document.getElementById('user-level-display');
+        const levelTextSpan = document.getElementById('level-text');
+        const testTakenMessage = document.getElementById('test-taken-message');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // --- UI Functions ---
+
+        const renderQuestions = () => {
+            testForm.innerHTML = QUESTIONS.map((q, index) => {
+                const qId = `q${index}`;
+                return `
+                    <div class="bg-nuvy-900 p-5 rounded-lg border border-nuvy-500">
+                        <p class="font-semibold text-white mb-3">${index + 1}. ${q.q}</p>
                         <div class="space-y-2">
-                            ${qData.options.map(option => `
-                                <label class="flex items-center text-gray-400 hover:text-white transition duration-150 cursor-pointer">
-                                    <input type="radio" name="q${index}" value="${option}" class="text-nuvy-blue-600 bg-nuvy-dark-800 border-gray-600 focus:ring-nuvy-blue-600 mr-3">
-                                    ${option}
+                            ${q.options.map((option, i) => `
+                                <label class="flex items-center p-2 rounded-md hover:bg-nuvy-700 cursor-pointer transition duration-100">
+                                    <input type="radio" name="${qId}" value="${option}" class="text-nuvy-500 focus:ring-nuvy-500 bg-nuvy-800 border-nuvy-600">
+                                    <span class="ml-3 text-nuvy-100">${option}</span>
                                 </label>
                             `).join('')}
                         </div>
                     </div>
                 `;
-                form.innerHTML += qHtml;
-            });
-        }
+            }).join('');
+        };
 
-        // Function to submit the quiz and display the level
-        function submitQuiz() {
-            const form = document.getElementById('english-quiz-form');
-            const resultMessage = document.getElementById('quiz-result-message');
-            const levelDisplay = document.getElementById('user-english-level');
+        const displayLevel = (levelInfo) => {
+            userLevelDisplay.classList.remove('hidden', 'bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-lime-500', 'bg-green-500', 'bg-green-600', 'bg-gray-400');
+            userLevelDisplay.classList.add(levelInfo.color);
+            levelTextSpan.textContent = levelInfo.level;
+        };
+        
+        const setTestTakenUI = (levelInfo) => {
+            displayLevel(levelInfo);
+            testForm.style.display = 'none';
+            submitButton.style.display = 'none';
+            testTakenMessage.classList.remove('hidden');
+            testResultMessage.innerHTML = `Welcome back! Your English level has been set as: <span class="font-bold">${levelInfo.level}</span>. You can now focus on improving!`;
+            
+            // Adjust result div background and border based on level color
+            testResultDiv.classList.remove('hidden', 'bg-nuvy-50', 'border-nuvy-500');
+            // We use the color name in the class name (e.g., bg-red-500) to find the text color for the div's text.
+            const textClass = levelInfo.color.replace('bg-', 'text-');
+            testResultDiv.classList.add(levelInfo.color.replace('500', '900').replace('600', '900'), 'border-2', levelInfo.border, textClass);
+            testResultDiv.querySelector('h3').classList.add(textClass);
+            testResultDiv.querySelector('p').classList.remove('text-white'); // Remove general white text
+            testResultDiv.querySelector('p').classList.add(textClass.replace('bg-', 'text-')); // Set specific color for result message
+            
+        };
 
-            if (!form || !resultMessage || !levelDisplay) return;
+        // --- Test Logic ---
 
+        const calculateScore = (formData) => {
             let score = 0;
-            let levelCounts = { 'A': 0, 'B': 0, 'C': 0 };
-
-            QUIZ_QUESTIONS.forEach((qData, index) => {
-                const selector = `input[name="q${index}"]:checked`;
-                const selectedOption = form.querySelector(selector);
-
-                if (selectedOption && selectedOption.value === qData.answer) {
+            QUESTIONS.forEach((q, index) => {
+                const userAnswer = formData.get(`q${index}`);
+                if (userAnswer === q.answer) {
                     score++;
-                    levelCounts[qData.level]++;
                 }
             });
+            return score;
+        };
 
-            // Determine the final level based on the highest count of correctly answered level-specific questions
-            let finalLevel = 'C';
-            if (levelCounts['A'] > 1 || score > 8) {
-                finalLevel = 'B';
-            }
-            if (levelCounts['C'] > 1 || score > 12) {
-                 finalLevel = 'A';
-            }
-            if (score < 5) {
-                finalLevel = 'C';
-            }
-            
-            let levelText = '';
-            let levelColor = '';
+        const handleSubmit = (event) => {
+            event.preventDefault();
 
-            switch (finalLevel) {
-                case 'A':
-                    levelText = 'Level A (Advanced)';
-                    levelColor = 'bg-nuvy-green text-nuvy-dark-950';
+            // 1. Check if all questions are answered
+            const formData = new FormData(testForm);
+            let allAnswered = true;
+            for (let i = 0; i < QUESTIONS.length; i++) {
+                if (!formData.has(`q${i}`)) {
+                    allAnswered = false;
                     break;
-                case 'B':
-                    levelText = 'Level B (Intermediate)';
-                    levelColor = 'bg-nuvy-yellow text-nuvy-dark-950';
-                    break;
-                case 'C':
-                    levelText = 'Level C (Developing)';
-                    levelColor = 'bg-nuvy-red text-white';
-                    break;
-                default:
-                    levelText = 'Level Unknown';
-                    levelColor = 'bg-gray-500 text-white';
+                }
             }
 
-            // Display result message
-            resultMessage.innerHTML = `Great job! Your estimated level is **${levelText}**. You scored ${score} out of ${QUIZ_QUESTIONS.length}. 
-                                       <br>Click <a href="#pricing" class="text-nuvy-blue-500 hover:text-nuvy-blue-600 font-bold">here</a> to join the club and start practicing!`;
-            resultMessage.classList.remove('hidden');
+            if (!allAnswered) {
+                // In a proper application, this would be a message box, not an alert.
+                // Simple inline visual feedback is added instead of alert
+                submitButton.textContent = "❗ Please Answer All Questions";
+                submitButton.classList.remove('bg-nuvy-500', 'hover:bg-nuvy-600');
+                submitButton.classList.add('bg-red-600', 'hover:bg-red-700');
+                
+                setTimeout(() => {
+                    submitButton.textContent = "Submit My Test";
+                    submitButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                    submitButton.classList.add('bg-nuvy-500', 'hover:bg-nuvy-600');
+                }, 2000);
+                return;
+            }
 
-            // Update header level display
-            levelDisplay.textContent = `LEVEL: ${finalLevel}`;
-            levelDisplay.className = `text-sm font-semibold px-3 py-1 rounded-full ${levelColor}`;
-            levelDisplay.classList.remove('hidden');
+            // 2. Calculate Score & Determine Level
+            const score = calculateScore(formData);
+            const levelInfo = getLevel(score);
 
-            // Scroll to the result message for visibility
-            resultMessage.scrollIntoView({ behavior: 'smooth' });
-        }
+            // 3. Save to Local Storage (Ensures test is only doable once)
+            localStorage.setItem('nuvy_english_level', JSON.stringify(levelInfo));
 
-        // Initialize quiz on load
-        window.onload = renderQuiz;
+            // 4. Update UI
+            setTestTakenUI(levelInfo);
+            testResultMessage.innerHTML = `Congratulations! You answered ${score} out of ${QUESTIONS.length} correctly. Your Nuvy English Level is: <span class="font-bold text-2xl">${levelInfo.level}</span>. Time to find your perfect conversation group!`;
+        };
+
+        const checkAndRenderTest = () => {
+            const storedLevel = localStorage.getItem('nuvy_english_level');
+
+            if (storedLevel) {
+                // If test has been taken, load saved level and disable form
+                const levelInfo = JSON.parse(storedLevel);
+                setTestTakenUI(levelInfo);
+            } else {
+                // If not taken, render the form and attach submit listener
+                renderQuestions();
+                testForm.addEventListener('submit', handleSubmit);
+            }
+        };
+
+        // --- Event Listeners and Initialization ---
+
+        window.onload = function() {
+            // Check for existing level on page load
+            checkAndRenderTest();
+
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        };
     </script>
 
 </body>
-
 </html>
